@@ -75,13 +75,14 @@
             //                no conflict
             mo.sync_state_for_sync = NASyncModelSyncErrorNone;
             mo.sync_state_for_sync = NASyncModelSyncStateSYNCED;
-            mo.data_for_sync = data;
-            mo.modified_date_for_sync = [[mo class] modifiedDateInServerItemData:data];
-            mo.edited_data_for_sync = nil;
-            if([[mo class] enabled_auto_delete_management]){
-                mo.is_deleted_for_sync = [[mo class] isDeletedKeyInServerItemData:data];
-            }
-            [mo updateByServerItemData:data context:context];
+//            mo.data_for_sync = data;
+//            mo.modified_date_for_sync = [[mo class] modifiedDateInServerItemData:data];
+//            mo.edited_data_for_sync = nil;
+//            if([[mo class] enabled_auto_delete_management]){
+//                mo.is_deleted_for_sync = [[mo class] isDeletedKeyInServerItemData:data];
+//            }
+//            [mo updateByServerItemData:data context:context];
+            [super _updateByServerItemData:data mo:mo context:context];
         }else{
             if([[mo modified_date_for_sync] compare:[[mo class] modifiedDateInServerItemData:data]] == NSOrderedAscending){
                 //                    ローカルで検知したコンフリクト
